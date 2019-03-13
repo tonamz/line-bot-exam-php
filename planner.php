@@ -31,9 +31,9 @@ $text = $event['source']['userId'];
  if($message == "id"){
         $arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
         $arrayPostData['messages'][0]['type'] = "text";
-        $arrayPostData['messages'][0]['text'] = "สวัสดีจ้าาา";
+        $arrayPostData['messages'][0]['text'] = $id;
 
-        replyMsg($arrayHeader,$id);
+        replyMsg($arrayHeader,$arrayPostData);
     }
     if($message == "สวัสดี"){
         $arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
