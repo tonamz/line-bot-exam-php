@@ -13,7 +13,7 @@
 
     if (strpos($message, 'งาน') !== false) {
 
-          $pieces = explode('งาน', $message);
+        $pieces = explode('งาน', $message);
         $work = explode('ส่ง', $pieces[1])
 
 
