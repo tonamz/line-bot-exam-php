@@ -12,9 +12,12 @@
     $message = $arrayJson['events'][0]['message']['text'];
 
     if (strpos($message, 'งาน') !== false) {
+
+        $pieces = explode('งาน', $message);
+
       $arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
         $arrayPostData['messages'][0]['type'] = "text";
-        $arrayPostData['messages'][0]['text'] = "จดแล้วจ้า";
+        $arrayPostData['messages'][0]['text'] =  $pieces;
         replyMsg($arrayHeader,$arrayPostData);
     }
 
