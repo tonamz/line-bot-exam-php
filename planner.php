@@ -17,7 +17,10 @@
         $work = explode('งาน', $message);
         $deadline = explode('ส่ง', $work[1]);
         $date = explode('/', $deadline[1]);
-        $datelineformate = "2019-".$date[0]."-".$date[1];
+
+        $month = str_replace(' ', '', $date[1]);
+        $day = str_replace(' ', '', $date[0]);
+        $datelineformate = "2019-".$month."-".$day;
 
 
       $arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
