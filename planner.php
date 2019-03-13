@@ -14,12 +14,12 @@
     if (strpos($message, 'งาน') !== false) {
 
         $pieces = explode('งาน', $message);
-        $work = explode('ส่ง', $pieces[1])
+        $work = explode('ส่ง', $pieces[1]);
 
 
       $arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
         $arrayPostData['messages'][0]['type'] = "text";
-        $arrayPostData['messages'][0]['text'] = '$work[0]'.'$work[1]';
+        $arrayPostData['messages'][0]['text'] = $work[0].$work[1];
         replyMsg($arrayHeader,$arrayPostData);
     }
 
