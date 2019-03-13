@@ -1,7 +1,7 @@
 <?php
     $host = 'localhost';
     $db   = 'tssnpcom_nongplanplan';
-    $user = 'tssnpcom';
+    $user = 'tssnpcom_nongplanplan';
     $pass = 'Tonnam123';
     $charset = 'utf8';
     
