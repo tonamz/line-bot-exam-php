@@ -14,27 +14,34 @@
 
     if (strpos($message, 'งาน') !== false) {
 
-        $pieces = explode('งาน', $message);
-        $work = explode('ส่ง', $pieces[1]);
+        $work = explode('งาน', $message);
+        $deadline = explode('ส่ง', $work[1]);
+        $date = explode('/', $deadline[1]);
+        $datelineformate = "2019-".$date[0]."-".$date[1]
 
+        
 
       $arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
         $arrayPostData['messages'][0]['type'] = "text";
-        $arrayPostData['messages'][0]['text'] = $work[0].$work[1];
+        $arrayPostData['messages'][0]['text'] = $deadline[0].$datelineformate;
         replyMsg($arrayHeader,$arrayPostData);
     }
 
+    function workDB($id,$work,$deadline){
+            $url = 'https://shielded-shelf-63805.herokuapp.com/work_db.php';
+            $myvars = 'user=' . $id . '&name=' . $work. '&deadline=' . $deadline;
 
-$text = $event['source']['userId'];
+            $ch = curl_init( $url );
+            curl_setopt( $ch, CURLOPT_POST, 1);
+            curl_setopt( $ch, CURLOPT_POSTFIELDS, $myvars);
+            curl_setopt( $ch, CURLOPT_FOLLOWLOCATION, 1);
+            curl_setopt( $ch, CURLOPT_HEADER, 0);
+            curl_setopt( $ch, CURLOPT_RETURNTRANSFER, 1);
 
+            $response = curl_exec( $ch );
+    }
 #ตัวอย่าง Message Type "Text"
- if($message == "id"){
-        $arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
-        $arrayPostData['messages'][0]['type'] = "text";
-        $arrayPostData['messages'][0]['text'] = $id;
 
-        replyMsg($arrayHeader,$arrayPostData);
-    }
     if($message == "สวัสดี"){
         $arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
         $arrayPostData['messages'][0]['type'] = "text";
@@ -90,6 +97,7 @@ $text = $event['source']['userId'];
         $arrayPostData['messages'][1]['stickerId'] = "131";
         replyMsg($arrayHeader,$arrayPostData);
     }
+
 function replyMsg($arrayHeader,$arrayPostData){
         $strUrl = "https://api.line.me/v2/bot/message/reply";
         $ch = curl_init();
