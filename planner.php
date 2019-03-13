@@ -22,6 +22,8 @@
         $day = str_replace(' ', '', $date[0]);
         $datelineformate = "2019-".$month."-".$day;
 
+        workDB($id,$deadline[0],$datelineformate);
+
 
       $arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
         $arrayPostData['messages'][0]['type'] = "text";
