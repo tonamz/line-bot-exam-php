@@ -24,7 +24,17 @@
     }
 
 
+$text = $event['source']['userId'];
+
 #ตัวอย่าง Message Type "Text"
+ if($message == "id"){
+        $arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
+        $arrayPostData['messages'][0]['type'] = "text";
+        $arrayPostData['messages'][0]['text'] = "สวัสดีจ้าาา";
+        $text = $event['source']['userId'];
+
+        replyMsg($arrayHeader,$text);
+    }
     if($message == "สวัสดี"){
         $arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
         $arrayPostData['messages'][0]['type'] = "text";
