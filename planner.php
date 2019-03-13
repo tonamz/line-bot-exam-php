@@ -15,9 +15,10 @@
 
         $pieces = explode('งาน', $message);
 
+
       $arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
         $arrayPostData['messages'][0]['type'] = "text";
-        $arrayPostData['messages'][0]['text'] =  $pieces;
+        $arrayPostData['messages'][0]['text'] = "$pieces";
         replyMsg($arrayHeader,$arrayPostData);
     }
 
