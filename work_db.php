@@ -3,7 +3,7 @@
     include 'db.php';
 
     try {
-        $stmt = $pdo->prepare('INSERT INTO work ( user, name, deadline) VALUES( :user, :name, :deadline');
+        $stmt = $pdo->prepare('INSERT INTO work(user,name,deadline) VALUES( :user, :name, :deadline');
         $stmt->execute(array(
         
             ':user' => $_POST['user'],
